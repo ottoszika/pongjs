@@ -1,0 +1,27 @@
+{
+  "name": "pongjs",
+  "version": "0.0.1",
+  "homepage": "https://github.com/ottoszika/pongjs",
+  "authors": [
+    "ottoszika <ottoszika@users.noreply.github.com>"
+  ],
+  "description": "Simple multiplayer ping-pong game",
+  "main": "js/app.js",
+  "keywords": [
+    "ping",
+    "pong",
+    "node",
+    "javascript",
+    "game",
+    "socket",
+    "io"
+  ],
+  "license": "GPL-3.0",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
