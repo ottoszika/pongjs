@@ -24,4 +24,12 @@ module.exports = ->
 
 	# Run webserver
 	console.log '[>] Starting webserver on port ' + app.get 'port'
-	app.listen app.get 'port'
+	server = app.listen app.get 'port'
+
+	# Attach socket.io to express
+	io = require 'socket.io'
+					.listen server
+
+	# Include io server
+	ioserver = require './server.js'
+	ioserver(io)

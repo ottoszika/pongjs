@@ -51,7 +51,7 @@ module.exports = (grunt) ->
 				files: [
 					expand: true
 					cwd: 'src/less'
-					src: '**/*.less'
+					src: '*.less'
 					dest: 'build/'
 					ext: '.css'
 				]
@@ -122,6 +122,21 @@ module.exports = (grunt) ->
 					cwd: 'build/'
 					src: '**/*.css'
 					dest: 'public/css'
+
+				,
+
+					expand: true
+					cwd: 'src/resources/'
+					src: '**/*.*'
+					dest: 'public/resources'
+				]
+
+			dist:
+				files: [
+					expand: true
+					cwd: 'src/resources/'
+					src: '**/*'
+					dest: 'public/resources'
 				]
 
 
@@ -133,7 +148,7 @@ module.exports = (grunt) ->
 					ignorePath: 'public'
 					expand: true
 				files:
-					'public/index.html': ['public/bower/**/*.js', 'public/js/**/*.js', 'public/bower/**/*.css', 'public/css/**/*.css']
+					'public/index.html': ['public/bower/*/*.js', 'public/js/*.js', 'public/bower/*/*.css', 'public/css/*.css']
 
 			dist:
 				options:
@@ -142,7 +157,7 @@ module.exports = (grunt) ->
 					expand: true
 
 				files:
-					'public/index.html': ['public/js/**/*.min.js', 'public/css/**/*.min.css']
+					'public/index.html': ['public/js/*/*.min.js', 'public/css/*/*.min.css']
 
 
 	# Load some NPM Tasks
@@ -161,3 +176,4 @@ module.exports = (grunt) ->
 	# Register tasks for debug (default) and production (dist)
 	grunt.registerTask 'default', ['clean', 'bower', 'coffee', 'less', 'jade', 'copy', 'injector:dev']
 	grunt.registerTask 'dist', ['clean', 'bower', 'coffee', 'less', 'concat', 'uglify', 'cssmin', 'jade', 'injector:dist']
+	grunt.registerTask 'dev', ['coffee', 'less', 'jade', 'copy', 'injector:dev']
