@@ -53,13 +53,20 @@ class @Client
 
 			socket.emit 'accept', [ me, opponent ]
 
+			$('#request').hide()
+
 
 		# On accepted event
 		@socket.on 'accepted', (room) ->
+				$('#request').hide()
+
+				# Getting config
+				config = new Config
+
 				# Creating a game instance
-				game = new Game self.socket, room.player_id, room.opponent_id
+				game = new Game self.socket, room.player_id, room.opponent_id, config.pad_width, config.pad_height, config.pad_padding, config.ball_diameter
 
 				# Creating Phaser game
-				window.game = new Phaser.Game 800, 600, Phaser.AUTO, 'game', game
+				window.game = new Phaser.Game config.window_width, config.window_height, Phaser.AUTO, 'game', game
 
 new Client

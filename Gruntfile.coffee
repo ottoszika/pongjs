@@ -42,6 +42,24 @@ module.exports = (grunt) ->
 					dest: 'build/'
 					rename: (dest, src) ->
 						dest + '/' + src.replace /\.coffee$/, '.js'
+
+				,
+
+					expand: true
+					cwd: 'src/common'
+					src: ['{,*/}*.coffee']
+					dest: 'app/'
+					rename: (dest, src) ->
+						dest + '/' + src.replace /\.coffee$/, '.js'
+
+				,
+
+					expand: true
+					cwd: 'src/common'
+					src: ['{,*/}*.coffee']
+					dest: 'build/'
+					rename: (dest, src) ->
+						dest + '/' + src.replace /\.coffee$/, '.js'
 				]
 
 
