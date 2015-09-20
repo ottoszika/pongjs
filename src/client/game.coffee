@@ -55,7 +55,7 @@ class @Game
 
 		# Down movement
 		if game.input.keyboard.isDown Phaser.Keyboard.DOWN
-			return if @me.y > 
+			return if @me.y > game.height - @pad_height
 
 			@me.y += @speed
 			@socket.emit 'position-y', y: @me.y, player_id: @player_id, opponent_id: @opponent_id

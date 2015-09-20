@@ -87,7 +87,7 @@ module.exports = (io) ->
 
 			# Scoring
 			if room.ball.x < 0
-				room.players[1].score++
+				room.players[0].score++
 
 			if room.ball.x > config.window_width
 				room.players[1].score++

@@ -34,6 +34,8 @@ class @Client
 				# Emitting a pair event with my id and opponent id
 				socket.emit 'pair', [ me, opponent ]
 
+				$('#status').text 'Invite sent!'
+
 
 		# On opponent request
 		@socket.on 'request', (hash) ->
@@ -53,12 +55,14 @@ class @Client
 
 			socket.emit 'accept', [ me, opponent ]
 
-			$('#request').hide()
+			$('#data').hide()
+			$('#score').show()
 
 
 		# On accepted event
 		@socket.on 'accepted', (room) ->
-				$('#request').hide()
+				$('#data').hide()
+				$('#score').show()
 
 				# Getting config
 				config = new Config

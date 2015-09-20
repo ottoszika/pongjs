@@ -1,18 +1,58 @@
 @import 'imports/variables.less';
+@import 'imports/mixins.less';
 
 html, body {
 	background: @backgroundColor;
 	color: @textColor;
+	font-family: @fontFamily;
 }
 
 .header {
 	color: textColor;
+	font-size: @headerFontSize;
+	.centered;
+}
+
+#data {
+	.centered;
 }
 
 #request {
 	display: none;
 }
 
+#hash {
+	font-weight: bold;
+}
+
+#score {
+	font-size: @scoreSize;
+	height: @scoreSize + 4px;
+	display: none;
+	.centered;
+}
+
+div {
+	.btn {
+		background: @buttonColor;
+		.button;
+	}
+
+	.btn-neg {
+		background: @buttonNegColor;
+		.button;
+	}
+}
+
 #opponent-hash {
 	font-weight: bold;
+}
+
+#game {
+
+	.centered(800px);
+
+	canvas {
+		border: 1px solid @borderColor;
+	}
 }
