@@ -4,8 +4,7 @@
   "description": "Simple multiplayer ping-pong game",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js",
-    "test": "./node_modules/mocha/bin/mocha test/**/*.coffee --compilers coffee:coffee-script/register"
+    "start": "node app.js"
   },
   "repository": {
     "type": "git",
