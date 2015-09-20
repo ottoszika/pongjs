@@ -12,7 +12,6 @@ class @Game
 
 	# Create game objects
 	create: ->
-		console.log @pad_height
 		@me = game.add.image @pad_padding, game.height / 2 - @pad_height / 2, 'pad'
 		@opponent = game.add.image game.width - @pad_padding - @pad_width, game.height / 2 - @pad_height / 2, 'pad'
 		@ball = game.add.image game.width / 2, game.height / 2, 'ball'

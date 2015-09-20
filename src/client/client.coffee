@@ -44,6 +44,13 @@ class @Client
 			$('#request').show()
 
 
+		# On stats received
+		@socket.on 'stats', (stats) ->
+			$('#players_count').text stats.players
+			$('#rooms_count').text stats.rooms
+
+
+
 		# Accept connection
 		$('#accept').click ->
 

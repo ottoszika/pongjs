@@ -3,6 +3,13 @@ extends ./layout.jade
 block content
 	div.header Simple multiplayer ping pong game
 
+	div#stats
+		strong Players online:
+		span#players_count
+		br
+		strong Rooms:
+		span#rooms_count
+
 	div#data
 		div Your hash is: 
 			span#hash

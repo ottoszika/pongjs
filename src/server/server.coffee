@@ -28,16 +28,38 @@ module.exports = (io) ->
 		# Emit back the user hash
 		socket.emit 'hash', user.hash
 
+		# Sending stats to users
+		socket.broadcast.emit 'stats', players: users.length, rooms: rooms.length
+		socket.emit 'stats', players: users.length, rooms: rooms.length
+
 
 		socket.on 'pair', (players) ->
 			
 			# Getting opponent socket
 			opponentSocket = _.first ( _.pluck ( _.filter users, hash: players[1] ), 'socket' )
+
+			return if not opponentSocket?
 			
 			# Sending first player hash to opponent
 			opponentSocket.emit 'request', players[0]
 
 
+		# Disconnect event => remove user and room
+		socket.on 'disconnect', ->
+			_.remove users, (user) ->
+
+				# Emitting changes
+				socket.broadcast.emit 'stats', players: users.length, rooms: rooms.length
+
+				user.socket.id is socket.id
+
+			_.remove rooms, (room) ->
+
+				# Emitting changes
+				socket.broadcast.emit 'stats', players: users.length, rooms: rooms.length
+
+				room.players[0].socket.id is socket.id or
+					room.players[1].socket.id is socket.id
 
 		# Accepted
 		socket.on 'accept', (players) ->
@@ -56,6 +78,10 @@ module.exports = (io) ->
 			# Alerting players with accepted event
 			roomPlayers[1].socket.emit 'accepted', opponent_id: roomPlayers[0].hash, player_id: roomPlayers[1].hash
 			roomPlayers[0].socket.emit 'accepted', opponent_id: roomPlayers[1].hash, player_id: roomPlayers[0].hash
+
+			# Emitting stats
+			socket.broadcast.emit 'stats', players: users.length, rooms: rooms.length
+			socket.emit 'stats', players: users.length, rooms: rooms.length
 
 
 		# Position change
@@ -81,9 +107,11 @@ module.exports = (io) ->
 			if room.ball.y < 0 or room.ball.y > config.window_height
 				room.ball.dy *= -1
 
-			if (room.ball.x < config.pad_padding + config.pad_width and room.ball.y > room.players[0].position_y and room.ball.y < room.players[0].position_y + config.pad_height) or
-				(room.ball.x > config.window_width - config.pad_padding - config.pad_width  and room.ball.y > room.players[1].position_y and room.ball.y < room.players[1].position_y + config.pad_height)
-					room.ball.dx *= -1
+			if room.ball.x < config.pad_padding + config.pad_width and room.ball.y > room.players[0].position_y and room.ball.y < room.players[0].position_y + config.pad_height
+				room.ball.dx *= -1
+
+			if room.ball.x > config.window_width - config.pad_padding - config.pad_width  and room.ball.y > room.players[1].position_y and room.ball.y < room.players[1].position_y + config.pad_height
+				room.ball.dx *= -1
 
 			# Scoring
 			if room.ball.x < 0
