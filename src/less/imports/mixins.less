@@ -1,0 +1,17 @@
+.centered(@width: 0) {
+	& when (@width = 0) {
+		text-align: center;
+	}
+
+	& when not (@width = 0) {
+		margin-left: -@width / 2;
+    	padding-left: 50%;
+	}
+}
+
+.button {
+	border: 1px solid lighten(@buttonColor, 20%);
+	color: @textColor;
+	display: inline;
+	cursor: pointer;
+}
