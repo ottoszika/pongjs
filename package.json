@@ -1,6 +1,6 @@
 {
   "name": "pongjs",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Simple multiplayer ping-pong game",
   "main": "app.js",
   "scripts": {
