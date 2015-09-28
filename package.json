@@ -4,7 +4,7 @@
   "description": "Simple multiplayer ping-pong game",
   "main": "app.js",
   "scripts": {
-    "postinstall": "grunt",
+    "postinstall": "./node_modules/grunt-cli/bin/grunt",
     "start": "node app.js"
   },
   "repository": {
@@ -27,6 +27,7 @@
   },
   "homepage": "https://github.com/ottoszika/pongjs#readme",
   "dependencies": {
+    "grunt-cli": "^0.1.13",
     "express": "^4.13.3",
     "express-error-handler": "^1.0.1",
     "lodash": "^3.10.1",
