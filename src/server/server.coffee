@@ -7,7 +7,7 @@ module.exports = (io) ->
 	_ = require 'lodash'
 
 	# Config class
-	Config = require './Config'
+	Config = require './config'
 
 	# Users array
 	users = []
