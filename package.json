@@ -4,6 +4,7 @@
   "description": "Simple multiplayer ping-pong game",
   "main": "app.js",
   "scripts": {
+    "postinstall": "grunt",
     "start": "node app.js"
   },
   "repository": {
