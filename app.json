@@ -1,0 +1,14 @@
+{
+  "name": "PongJS",
+  "description": "Simple multiplayer ping-pong game",
+  "repository": "https://github.com/ottoszika/pongjs",
+  "keywords": [
+    "ping",
+    "pong",
+    "node",
+    "javascript",
+    "game",
+    "socket",
+    "io"
+  ]
+}
