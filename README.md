@@ -3,6 +3,8 @@ Simple multiplayer ping-pong game written in `CoffeeScript`, `LESS` and `Jade`.
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 
+Demo: https://pong-js.herokuapp.com/
+
 First of all you need to install all Node JS project dependencies.
 ```sh
 $ npm install
