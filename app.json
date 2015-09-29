@@ -2,6 +2,9 @@
   "name": "PongJS",
   "description": "Simple multiplayer ping-pong game",
   "repository": "https://github.com/ottoszika/pongjs",
+  "env": {
+    "NODE_CONFIG_PRODUCTION": false
+  },
   "keywords": [
     "ping",
     "pong",
