@@ -29,8 +29,12 @@ module.exports = (io) ->
 		socket.emit 'hash', user.hash
 
 		# Sending stats to users
-		socket.broadcast.emit 'stats', players: users.length, rooms: rooms.length
-		socket.emit 'stats', players: users.length, rooms: rooms.length
+
+		# Getting online hashes
+		online = _.pluck users, 'hash'
+
+		socket.broadcast.emit 'stats', players: users.length, rooms: rooms.length, online: online
+		socket.emit 'stats', players: users.length, rooms: rooms.length, online: online
 
 
 		socket.on 'pair', (players) ->
@@ -47,19 +51,19 @@ module.exports = (io) ->
 		# Disconnect event => remove user and room
 		socket.on 'disconnect', ->
 			_.remove users, (user) ->
-
-				# Emitting changes
-				socket.broadcast.emit 'stats', players: users.length, rooms: rooms.length
-
 				user.socket.id is socket.id
 
 			_.remove rooms, (room) ->
 
-				# Emitting changes
-				socket.broadcast.emit 'stats', players: users.length, rooms: rooms.length
-
 				room.players[0].socket.id is socket.id or
 					room.players[1].socket.id is socket.id
+
+			# Getting online hashes
+			online = _.pluck users, 'hash'
+
+			# Emitting changes
+			socket.broadcast.emit 'stats', players: users.length, rooms: rooms.length, online: online
+
 
 		# Accepted
 		socket.on 'accept', (players) ->
