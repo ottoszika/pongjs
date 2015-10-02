@@ -46,6 +46,8 @@ class @Client
 
 		# On stats received
 		@socket.on 'stats', (stats) ->
+			stats.online = ('<a href="" onclick="$(\'#opponent\').val(\'' + online_user + '\'); return false;">' + online_user + '</a>' for online_user in stats.online)
+			$('#users_online').html stats.online.join ', '
 			$('#players_count').text stats.players
 			$('#rooms_count').text stats.rooms
 
