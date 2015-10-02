@@ -29,3 +29,7 @@ To run the server, just type:
 ```sh
 $ npm start
 ```
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/ottoszika/pongjs/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
