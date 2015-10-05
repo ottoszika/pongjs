@@ -30,3 +30,6 @@ bower_components
 app
 build
 public
+hooks
+platforms
+plugins

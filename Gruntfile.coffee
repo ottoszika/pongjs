@@ -60,6 +60,15 @@ module.exports = (grunt) ->
 					dest: 'build/'
 					rename: (dest, src) ->
 						dest + '/' + src.replace /\.coffee$/, '.js'
+
+				,
+
+					expand: true
+					cwd: 'src/mobile'
+					src: ['{,*/}*.coffee']
+					dest: 'www/js/'
+					rename: (dest, src) ->
+						dest + '/' + src.replace /\.coffee$/, '.js'
 				]
 
 
@@ -122,6 +131,14 @@ module.exports = (grunt) ->
 					dest: 'public'
 					expand: true
 					ext: '.html'
+
+				,
+
+					cwd: 'src/views'
+					src: 'mobile.jade'
+					dest: 'www'
+					expand: true
+					ext: '.html'				
 				]
 
 
