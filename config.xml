@@ -5,7 +5,7 @@
         Simple multiplayer ping-pong game
     </description>
     <author email="otto.szika@users.noreply.github.com" href="https://github.com/ottoszika">
-        Apache Cordova Team
+        Otto Szika
     </author>
     <content src="mobile.html" />
     <plugin name="cordova-plugin-whitelist" version="1" />
